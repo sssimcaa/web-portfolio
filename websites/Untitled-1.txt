@@ -1,0 +1,71 @@
+var ship;
+var invaders = [];
+var gunfires =[];
+
+function setup() {
+  createCanvas(600, 400);
+  ship = new Ship();
+  // gunfire = new Gunfire(width/2,height/2);
+  for (var i = 0; i < 7; i++) {
+    invaders[i] = new Invader(i * 70 + 70, 60);
+  }  
+}
+
+
+function draw() {
+  background(51);
+  ship.show();
+
+ 
+  
+   for (var i = 0; i < gunfires.length; i++) {
+    gunfires[i].show();
+    gunfires[i].move();
+     
+    for (var j = 0; j < invaders.length; j++) {
+  		if (gunfires[i].hits(invaders[j])) {
+     			gunfires[i].takeout();
+        
+      }  
+     }
+   }
+   
+  var edge = false;
+  
+  for (var i = 0; i < invaders.length; i++) {
+    invaders[i].show();
+    invaders[i].move();
+			if (invaders[i].x > width || gunfires[i].x < 0) {
+          edge = true;
+    }
+  }
+          
+  if (edge) {
+      for (var i = 0; i < invaders.length; i++) {
+   			invaders[i].shiftDown();
+   }
+  }
+        
+     for (var i = gunfires.length-1; i >=0; i--) {
+   if(gunfires[i].toDelete) {
+ 			gunfires.splice(i,1);  
+       }
+     }
+
+  }
+
+
+
+function keyPressed() {
+  if (key === ' ') {
+  var gunfire = new Gunfire(ship.x, height);
+    gunfires.push(gunfire);
+  }
+  
+  if (keyCode === RIGHT_ARROW) {
+    ship.move(1);
+  } else if (keyCode === LEFT_ARROW) {
+    ship.move(-1);
+  }
+}
+

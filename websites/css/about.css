@@ -1,0 +1,41 @@
+
+
+.about-container {
+    width: 100%;
+    height: 800px; 
+    margin-top: 150px;
+
+
+}
+
+ h2 {
+     float: left;
+    text-align: center;
+    font-size: 60px;
+    font-family: 'Darker Grotesque', sans-serif;
+    color: rgb(195,195,195);
+}
+
+.about-box{
+    height: 700px;
+    width: 46%;
+    /* border: 3px solid blue; */
+    float: left;
+    margin-left: 25px;
+    
+}
+
+.about-img, .about-audio{
+    /* text-align will only work on inline elements like images. margin works on block level elements*/
+    display: block;
+    margin: auto; /*auto will center it so if you want to edit it while it's center place it below*/
+    margin-top: 20px;
+}
+
+.about-box p{
+    float: left;
+    margin: 6px;
+    font-size: 19px;
+    font-family: 'Poiret One', cursive;
+    color:rgb(195,195,195);
+}
